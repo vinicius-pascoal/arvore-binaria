@@ -75,6 +75,59 @@ export class AVLTree {
     return no;
   }
 
+  //TODO testar e interar remover method
+  remover(no: TreeNode | null, valor: number): TreeNode | null {
+    if (!no) return no;
+
+    if (valor < no.valor) {
+      no.esquerda = this.remover(no.esquerda, valor);
+    } else if (valor > no.valor) {
+      no.direita = this.remover(no.direita, valor);
+    } else {
+      if (!no.esquerda || !no.direita) {
+        return no.esquerda ? no.esquerda : no.direita;
+      }
+      const temp = this.minimo(no.direita);
+      no.valor = temp.valor;
+      no.direita = this.remover(no.direita, temp.valor);
+    }
+
+    if (!no) return no;
+
+    no.altura = Math.max(this.altura(no.esquerda), this.altura(no.direita)) + 1;
+
+    const balance = this.fatorBalanceamento(no);
+
+    if (balance > 1 && this.fatorBalanceamento(no.esquerda!) >= 0) return this.rotacaoDireita(no);
+    if (balance < -1 && this.fatorBalanceamento(no.direita!) <= 0) return this.rotacaoEsquerda(no);
+    if (balance > 1 && this.fatorBalanceamento(no.esquerda!) < 0) {
+      no.esquerda = this.rotacaoEsquerda(no.esquerda!);
+      return this.rotacaoDireita(no);
+    }
+    if (balance < -1 && this.fatorBalanceamento(no.direita!) > 0) {
+      no.direita = this.rotacaoDireita(no.direita!);
+      return this.rotacaoEsquerda(no);
+    }
+
+    return no;
+  }
+
+  minimo(no: TreeNode): TreeNode {
+    let atual = no;
+    while (atual.esquerda) {
+      atual = atual.esquerda;
+    }
+    return atual;
+  }
+
+  // TODO testar buscar method
+  buscar(no: TreeNode | null, valor: number): TreeNode | null {
+    if (!no || no.valor === valor) return no;
+    if (valor < no.valor) return this.buscar(no.esquerda, valor);
+    return this.buscar(no.direita, valor);
+  }
+
+
   inserirValor(valor: number) {
     this.raiz = this.inserir(this.raiz, valor);
   }
