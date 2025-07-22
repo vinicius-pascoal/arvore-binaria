@@ -2,6 +2,7 @@
 
 import { TreeNode as LogicNode } from "@/lib/Tree";
 import { TreeNode } from "./TreeNode";
+import { JSX } from "react/jsx-runtime";
 
 interface PositionedNode {
   node: LogicNode;
