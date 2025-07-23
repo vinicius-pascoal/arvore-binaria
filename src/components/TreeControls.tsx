@@ -28,7 +28,7 @@ export function TreeControls({ onInsert, tipo }: { onInsert: (v: number) => void
         }}
         className="bg-green-600 text-white px-4 py-2 rounded"
       >
-        {tipo === "inserir" ? "Inserir" : "Remover"}
+        {tipo}
       </button>
     </div>
   );

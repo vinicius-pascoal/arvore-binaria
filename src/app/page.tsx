@@ -23,11 +23,22 @@ export default function Home() {
     forceUpdate((n) => n + 1);
   }
 
+  const handlebusca = (valor: number) => {
+    const encontrado = arvore.buscarValor(valor);
+    if (encontrado) {
+      alert(`Valor ${valor} encontrado!`);
+    } else {
+      alert(`Valor ${valor} não encontrado.`);
+    }
+    forceUpdate((n) => n + 1);
+  };
+
   return (
     <main className="p-6 max-w-4xl mx-auto text-center">
       <h1 className="text-3xl font-bold">Árvore Binária Balanceada (AVL)</h1>
       <TreeControls onInsert={handleInsert} tipo="inserir" />
       <TreeControls onInsert={handleRemove} tipo="remover" />
+      <TreeControls onInsert={handlebusca} tipo="buscar" />
       <TreeVisualizer root={arvore.raiz} />
       <Traversals
         preorder={arvore.preorder()}

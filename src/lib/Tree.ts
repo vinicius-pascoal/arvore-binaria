@@ -75,7 +75,6 @@ export class AVLTree {
     return no;
   }
 
-  //TODO testar e interar remover method
   remover(no: TreeNode | null, valor: number): TreeNode | null {
     if (!no) return no;
 
@@ -120,11 +119,14 @@ export class AVLTree {
     return atual;
   }
 
-  // TODO testar buscar method
   buscar(no: TreeNode | null, valor: number): TreeNode | null {
     if (!no || no.valor === valor) return no;
     if (valor < no.valor) return this.buscar(no.esquerda, valor);
     return this.buscar(no.direita, valor);
+  }
+
+  buscarValor(valor: number): TreeNode | null {
+    return this.buscar(this.raiz, valor);
   }
 
   removerValor(valor: number) {
