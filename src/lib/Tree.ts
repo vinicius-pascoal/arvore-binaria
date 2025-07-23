@@ -127,6 +127,9 @@ export class AVLTree {
     return this.buscar(no.direita, valor);
   }
 
+  removerValor(valor: number) {
+    this.raiz = this.remover(this.raiz, valor);
+  }
 
   inserirValor(valor: number) {
     this.raiz = this.inserir(this.raiz, valor);

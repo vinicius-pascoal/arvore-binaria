@@ -6,6 +6,7 @@ import { TreeControls } from "@/components/TreeControls";
 import { Traversals } from "@/components/Traversals";
 import { TreeVisualizer } from "@/components/TreeVisualizer";
 import { AVLTree } from "@/lib/Tree";
+import { a } from "framer-motion/client";
 
 const arvore = new AVLTree();
 
@@ -17,10 +18,16 @@ export default function Home() {
     forceUpdate((n) => n + 1);
   };
 
+  const handleRemove = (valor: number) => {
+    arvore.removerValor(valor);
+    forceUpdate((n) => n + 1);
+  }
+
   return (
     <main className="p-6 max-w-4xl mx-auto text-center">
       <h1 className="text-3xl font-bold">Árvore Binária Balanceada (AVL)</h1>
-      <TreeControls onInsert={handleInsert} />
+      <TreeControls onInsert={handleInsert} tipo="inserir" />
+      <TreeControls onInsert={handleRemove} tipo="remover" />
       <TreeVisualizer root={arvore.raiz} />
       <Traversals
         preorder={arvore.preorder()}

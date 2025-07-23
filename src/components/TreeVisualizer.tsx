@@ -3,6 +3,7 @@
 import { TreeNode as LogicNode } from "@/lib/Tree";
 import { TreeNode } from "./TreeNode";
 import { JSX } from "react/jsx-runtime";
+import { div } from "framer-motion/client";
 
 interface PositionedNode {
   node: LogicNode;
@@ -84,7 +85,8 @@ export function TreeVisualizer({ root }: { root: LogicNode | null }) {
   });
 
   return (
-    <div className="relative w-full min-h-[400px] border mt-8 bg-white">
+    <div className="relative w-full min-h-[400px] border mt-8 bg-white p-4 overflow-auto">
+    <div className="relative w-full min-h-[400px] ">
       {linhas}
       {posicoes.map((p) => (
         <div
@@ -98,6 +100,7 @@ export function TreeVisualizer({ root }: { root: LogicNode | null }) {
           <TreeNode valor={p.node.valor} />
         </div>
       ))}
+    </div>
     </div>
   );
 }
