@@ -38,9 +38,9 @@ export default function Home() {
     <main className="p-6  mx-auto text-center">
       <Starfield starCount={200} />
       <h1 className="text-3xl font-bold">Árvore Binária Balanceada (AVL)</h1>
-      <div className="flex items-center mx-auto justify-center ">
+      <div className="flex items-center mx-auto justify-center sm:flex-row flex-col">
         <TreeVisualizer root={arvore.raiz} />
-        <div className="w-1/3 ml-8">
+        <div className="sm:w-1/3 ml-8">
           <TreeControls onInsert={handleInsert} tipo="inserir" />
           <TreeControls onInsert={handleRemove} tipo="remover" />
           <TreeControls onInsert={handlebusca} tipo="buscar" />

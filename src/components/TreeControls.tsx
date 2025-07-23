@@ -33,7 +33,7 @@ export function TreeControls({
           setValor("");
         }}
         className={
-          "text-white p-2 rounded w-32 rounded-l-none " +
+          "text-white p-2 rounded w-32 rounded-l-none transition-transform " +
           (tipo === "inserir"
             ? "bg-green-500 hover:bg-green-600"
             : tipo === "remover"
