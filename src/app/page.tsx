@@ -7,6 +7,7 @@ import { Traversals } from "@/components/Traversals";
 import { TreeVisualizer } from "@/components/TreeVisualizer";
 import { AVLTree } from "@/lib/Tree";
 import { a } from "framer-motion/client";
+import Starfield from "@/components/Starfield";
 
 const arvore = new AVLTree();
 
@@ -35,6 +36,7 @@ export default function Home() {
 
   return (
     <main className="p-6  mx-auto text-center">
+      <Starfield starCount={200} />
       <h1 className="text-3xl font-bold">Árvore Binária Balanceada (AVL)</h1>
       <div className="flex items-center mx-auto justify-center ">
         <TreeVisualizer root={arvore.raiz} />

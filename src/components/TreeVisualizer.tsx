@@ -50,6 +50,7 @@ function LinhaConexao({ fromX, fromY, toX, toY }: { fromX: number; fromY: number
   );
 }
 
+// fundo desfocado 
 export function TreeVisualizer({ root }: { root: LogicNode | null }) {
   const posicoes = calcularPosicoes(root);
 
@@ -85,7 +86,7 @@ export function TreeVisualizer({ root }: { root: LogicNode | null }) {
   });
 
   return (
-    <div className="relative w-full min-h-[400px] border mt-8 bg-white p-4 overflow-auto ">
+    <div className="relative w-full min-h-[400px] mt-8  p-4 overflow-auto shadow-lg rounded-lg backdrop-blur-lg bg-white/10">
     <div className="relative w-full min-h-[400px] ">
       {linhas}
       {posicoes.map((p) => (
