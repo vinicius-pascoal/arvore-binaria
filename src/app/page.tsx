@@ -21,7 +21,7 @@ export default function Home() {
   const handleRemove = (valor: number) => {
     arvore.removerValor(valor);
     forceUpdate((n) => n + 1);
-  }
+  };
 
   const handlebusca = (valor: number) => {
     const encontrado = arvore.buscarValor(valor);
@@ -34,17 +34,21 @@ export default function Home() {
   };
 
   return (
-    <main className="p-6 max-w-4xl mx-auto text-center">
+    <main className="p-6  mx-auto text-center">
       <h1 className="text-3xl font-bold">Árvore Binária Balanceada (AVL)</h1>
-      <TreeControls onInsert={handleInsert} tipo="inserir" />
-      <TreeControls onInsert={handleRemove} tipo="remover" />
-      <TreeControls onInsert={handlebusca} tipo="buscar" />
-      <TreeVisualizer root={arvore.raiz} />
-      <Traversals
-        preorder={arvore.preorder()}
-        inorder={arvore.inorder()}
-        postorder={arvore.postorder()}
-      />
+      <div className="flex items-center mx-auto justify-center ">
+        <TreeVisualizer root={arvore.raiz} />
+        <div className="w-1/3 ml-8">
+          <TreeControls onInsert={handleInsert} tipo="inserir" />
+          <TreeControls onInsert={handleRemove} tipo="remover" />
+          <TreeControls onInsert={handlebusca} tipo="buscar" />
+          <Traversals
+            preorder={arvore.preorder()}
+            inorder={arvore.inorder()}
+            postorder={arvore.postorder()}
+          />
+        </div>
+      </div>
     </main>
   );
 }
